@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "09e5d3a1-c3e8-49cc-ac87-049cc1f2406c",
+		"name": "Secure Restful APIs Communication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "305974"
+	},
+	"item": [
+		{
+			"name": "API 1 - Send Message to API 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"message\": \"Secure message! 🔐\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_1_SEND_MESSAGE_URL}}",
+					"host": [
+						"{{API_1_SEND_MESSAGE_URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 2 - Send Message to API 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"message\": \"Secure message! 🔐\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_2_SEND_MESSAGE_URL}}",
+					"host": [
+						"{{API_2_SEND_MESSAGE_URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 1 - Receive Mesaage",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Signature",
+						"value": "SydEMmooVCqAswt58oA2DSO7/6PDx1+iyaDP95UzOSkOvdO39a6ZoxAHbz15IaXHXdYeFaafg/3CWu00JEizwOQ2dHkejlQkfbYiETU7FGVwpcuQr/M5GaGNbuMl6CkVVsjRZTItFDU/ypkrL1oNEUhZYgngTHWPqtqFx6XwUmniKLL4vd9so3RP03EnqsQwGBXV+qWqHZ2OvJfZyF9vbZBcL52c76N6+0ackiQteToQxBb4hJUUTOjb7VvpfGxVJeyy+OlRZeHvIx24N6OBOr2e26rcSeugCUY67YlAfgFkDktIRo0djy9eLPcY9aFIFLNSv4XL+IUGXwGU2Q2e2g==",
+						"type": "text"
+					},
+					{
+						"key": "X-Encryption-Key",
+						"value": "CczTJTm8PmXbvkQlbSpyVqHbxv/C4b8IzmD4sGnhYWo8wommJQ1q+SZr89iXE6kP8sLud7wIXLQTXxTYD1NMjF+jxEqvg5xRYLsggX1hMCb3TO/rz8vhmEW0Xm1iPZRa/Q/hCusod+rCR/ebIIbshTFuHGV790rSNWPuZqF9Vb4hAbLLHj+1hHy4YOlTt7h6u5JBlWChmFGytzs9M33JnIlJdGaOHf5Mu9VW2JrntR8HkVW1vJGCGPP24NcHOK1AsnomB6xFDqGdVcQ8qhBZUl8SpgyaP6nHTk5YnhSRnx28f18pWuGwP10IxLGDIAsdR9U7bLkd9+9plU0EOa7AIw==...",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"encrypted\": \"91b5f1e4ef67d0627a8630c4a0f9fef8e9c6f8105b5d9795788d5f40821ca937\",\n    \"iv\": \"8b14518471e482bc8ed3f08f38ddae63\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_1_RECEIVE_MESSAGE_URL}}",
+					"host": [
+						"{{API_1_RECEIVE_MESSAGE_URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API 2 - Receive Mesaage",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Signature",
+						"value": "SROcbq9B0XKZ3+NKW2KB9t+cQT4gvFkjLGScOEpeoW77p9LRZIh9HjSc4/S8KJvSqvwQgT6GGYt0tLszSU0zvlnhEE6A8j65IgvOB5NF7Gn0URoAGxm1AKpMYon7UWao0pygG+BYj6TTQ5GprqHTK63iOujTBWMWU6aeS+I83GiWUL01m0QYXzTMJBbpyOdQxQmknUBvPfbgyw+6aIL+tBIiAIzehKm5kSywB5P0JP6kiWhXOU6qZZzhGVAphIBeMB1z+VZezLIu7Sn2VGQIXGELITbG8c/wYLLdcIwYXpiN8rMSnRzARkWxwYnr2lsY/gL9RheYjafgYzCbqgHs3g==",
+						"type": "text"
+					},
+					{
+						"key": "X-Encryption-Key",
+						"value": "V7M8Xeajmqn5RfWr+x5AW90kbuLDUmQxwmDA2Si0pPfvBhaoBhGRbvNhxy+rEeXga/vqvutBZhIbCzdU8PKQvvPkxA4cdlF9BMYLpWMc21rAVJF+fo/WjcEGSO1J3/5RV1u7+UbZkyGk9bqaK4+e5dDtxslS/dQGRFMUwv/yfWCrfPMycCelnf9taI/bgF8ECLq6qNMJOupLjQtWFr6bn1RDT0QtcI6zh56SAmwce98MKCuhxk1uoV9x17+4lwt/W1WwFFEjCMcCQm+s/wb/LDZitJcBp6Qd5WTXeZ+QjHrYTSTT8G1CJUyqqA463+nhPi+gYoMMdyYoNjqMY3Ancg==",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"encrypted\": \"30dd032e727eed71954ec875a081e3363a0a30883a850163fc5f63cde06cb252\",\n    \"iv\": \"3d5cf514ce65e5907ab05eb0429da089\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_2_RECEIVE_MESSAGE_URL}}",
+					"host": [
+						"{{API_2_RECEIVE_MESSAGE_URL}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,31 @@
+# Use the latest Node.js image
+FROM node:latest
+
+# Set the working directory inside the container
+WORKDIR /usr/src/app
+
+# Copy the application source code
+COPY src/index-api-1.js ./index.js
+COPY src/crypto-utils.js ./crypto-utils.js
+COPY src/file-utils.js ./file-utils.js
+COPY src/debug-utils.js ./debug-utils.js
+
+# Copy the secret key files into the container
+COPY certs/api_1_private_key.pem /run/secrets/api_1_private_key.pem
+COPY certs/api_2_public_key.pem /run/secrets/api_2_public_key.pem
+
+# Copy package.json and package-lock.json files for npm install
+COPY package.json ./package.json
+
+# Install dependencies
+RUN npm install
+
+# Set environment variables to point to the key files
+ENV API_1_PRIVATE_KEY_FILE=/run/secrets/api_1_private_key.pem
+ENV API_2_PUBLIC_KEY_FILE=/run/secrets/api_2_public_key.pem
+
+# Expose port 3000 for the API
+EXPOSE 3000
+
+# Command to run the API
+CMD ["node", "index.js"]

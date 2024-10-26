@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  secure_messages_api_1:
+    image: secure-messages-api-1
+    container_name: secure-messages-api-1
+    environment:
+      - API_2_RECEIVE_MESSAGE_URL=http://secure_messages_api_2:4000/receive-message
+      - DEBUG_MODE=true
+    working_dir: /usr/src/app
+    ports:
+      - "3000:3000"
+    command: node index.js
+
+  secure_messages_api_2:
+    image: secure-messages-api-2
+    container_name: secure_messages_api_2
+    environment:
+      - API_1_RECEIVE_MESSAGE_URL=http://secure_messages_api_1:3000/receive-message
+      - DEBUG_MODE=true
+    working_dir: /usr/src/app
+    ports:
+      - "4000:4000"
+    command: node index.js
