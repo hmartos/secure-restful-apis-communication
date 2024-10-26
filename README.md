@@ -53,3 +53,11 @@ To generate RSA 2048 certificates follow this steps:
 `openssl genrsa -out api_2_private_key.pem 2048`
 
 `openssl rsa -in api_2_private_key.pem -pubout -out api_2_public_key.pem`
+
+## Running test
+
+Execute `npm test` to run unit tests.
+
+## License
+
+Copyright 2024 Héctor Martos. Code released under the [MIT License](./LICENSE).

@@ -17,7 +17,7 @@
     "docker:start": "npm run docker:build-api-1 && npm run docker:build-api-2 && docker compose up"
   },
   "author": "hmartos",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "jest": "^29.7.0"
   }
